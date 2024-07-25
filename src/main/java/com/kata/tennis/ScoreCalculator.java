@@ -6,6 +6,9 @@ import com.kata.tennis.strategy.NormalScoreStrategy;
 import com.kata.tennis.strategy.ScoreStrategy;
 
 public class ScoreCalculator {
+
+    private static ScoreCalculator instance;
+
     private ScoreStrategy normalScoreStrategy;
     private ScoreStrategy deuceScoreStrategy;
     private ScoreStrategy gameOverScoreStrategy;
@@ -25,6 +28,17 @@ public class ScoreCalculator {
         deuceScoreStrategy = new DeuceScoreStrategy();
         gameOverScoreStrategy = new GameOverScoreStrategy();
         currentScoreStrategy = normalScoreStrategy;
+    }
+
+    /**
+     * Method to get the instance of the ScoreCalculator class using singleton pattern.
+     * @return
+     */
+    public static synchronized ScoreCalculator getInstance() {
+        if (instance == null) {
+            instance = new ScoreCalculator();
+        }
+        return instance;
     }
 
     /**

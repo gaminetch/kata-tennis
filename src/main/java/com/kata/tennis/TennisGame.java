@@ -9,7 +9,7 @@ public class TennisGame {
      * @param args command line arguments.
      */
     public static void main(String[] args) {
-        ScoreCalculator game = new ScoreCalculator();
+        ScoreCalculator game = ScoreCalculator.getInstance();
         game.computeScore("ABABABBABAAA");
     }
 }
